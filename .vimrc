@@ -1,7 +1,11 @@
+execute pathogen#infect()
+
 syntax on
+"filetype plugin on
 filetype indent plugin on
 
-set <C-s> :update
+let g:pydiction_location = '/home/sol/.vim/bundle/pydiction/complete-dict'
+map <C-s> <esc>:update<CR>
 set lazyredraw
 
 set expandtab

@@ -3,10 +3,10 @@
 # Stop & restart by running in a terminal: killall -SIGUSR1 conky
 #
 # Configuration Settings:
-
+ 
 # Use Xft? 
 use_xft yes 
-xftfont DejaVu Sans:size=8
+xftfont DejaVu Sans:size=10
 xftalpha 0.01
 text_buffer_size 2048
 
@@ -47,10 +47,10 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 
 # Minimum size of text area
-minimum_size 172 746
+minimum_size 272 746
 
 # Maximum_width
-maximum_width 180
+maximum_width 190
 
 # Update_interval_on_battery
 # update_interval_on_battery 1
@@ -142,7 +142,7 @@ ${color}${font}${voffset -1}Conditions ${color2}${scroll 24${font xirod:size=8}$
 ${color}${font}Wind ${font xirod:size=9}${color2}${goto 132}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font xirod:size=7}${goto 152}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
 ${color}${font}Humidity${font xirod:size=9}${color2}${goto 145}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}%
 ${color}${voffset -3}${font}Barometer${color3}${font xirod:size=9}${goto 115}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "pressure=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"} ${font xirod:size=6}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "pressure=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
-${color}${font}Sunrise${color1} ${execi 300 grep "yweather:astronomy" ~/.cache/weather.xml | grep -o "sunrise=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}${goto 97}${color}Sunset${color1} ${execi 300 grep "yweather:astronomy" ~/.cache/weather.xml | grep -o "sunset=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+${color}${font}Sunrise${color1} ${execi 300 grep "yweather:astronomy" ~/.cache/weather.xml | grep -o "sunrise=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}${goto 117}${color}set${color1} ${execi 300 grep "yweather:astronomy" ~/.cache/weather.xml | grep -o "sunset=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
 ${color2}${font DejaVu Sans Mono:size=8}${alignc} F  o  r  e  c  a  s  t${color1}
 ${goto 12}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[a-z]' '[A-Z]'}${goto 85}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[a-z]' '[A-Z]'}${goto 148}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3' | tr '[a-z]' '[A-Z]'}
 ${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°/${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°${goto 77}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°/${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 141}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°/${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°
@@ -152,9 +152,9 @@ ${voffset -8}${color4}${Stippled_hr 0}
 ${color4}${voffset -6}${stippled_hr 0} 
 ${color1}${font droid:size=44}[${voffset -54}${font}
 #${color2}${font Xirod:size=6}${goto 40}Core ${color}Temp${goto 120}${color3}${font Xirod:size=11}${voffset -6}${acpitemp}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}F
-${color2}${font xirod:size=6}${voffset 4}${goto 40}Core 0 ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors coretemp-isa-0000 | grep 'Core 0:'|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
-${color2}${font xirod:size=6}${voffset 4}${goto 40}Core 1 ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors coretemp-isa-0000 | grep 'Core 1:'|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
-${color2}${font xirod:size=6}${voffset 4}${goto 40}GPU ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors radeon-pci-100 | grep temp1|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
+${color2}${font xirod:size=6}${voffset 4}${goto 30}Core 0 ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors coretemp-isa-0000 | grep 'Core 0:'|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
+${color2}${font xirod:size=6}${voffset 4}${goto 30}Core 1 ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors coretemp-isa-0000 | grep 'Core 1:'|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
+${color2}${font xirod:size=6}${voffset 4}${goto 30}GPU ${color}Temp${goto 120}${color3}${font xirod:size=11}${alignr}${voffset -4}${goto 120}${execi 1000 sensors radeon-pci-100 | grep temp1|cut -c 16-19}${font DejaVu Sans:size=16}${voffset -2}°${font Xirod:size=8}${voffset -4}C 
 #${color2}${font xirod:size=6}${voffset 4}${goto 40}HDD ${color}TEMP${color3} 
 #Hard Disk 2:$alignr${execi 1000 hddtemp /dev/sdb 127.0.0.1 7634}
 #Hard Disk 1:$alignr${hddtemp /dev/sda 127.0.0.1 7634}
@@ -168,18 +168,19 @@ ${color2}CPU2:${color1} ${cpu cpu2}%
 ${color1}${cpubar cpu2 4,175}
 ${color}${font}Frequency:${goto 110}GHz:$freq_g
 ${color}RAM: $memperc% ${font DejaVu Sans:size=8}${goto 110}$mem / $memmax
-${font}Processes:$processes${goto 110}Running: ${goto 160}$running_processes
-${font}Threads:$threads${goto 110}Running: ${goto 160}$running_threads 
+${font}Processes:$processes${goto 110}Running: ${goto 170}$running_processes
+${font}Threads:$threads${goto 110}Running: ${goto 170}$running_threads 
 ${font}Uptime: ${goto 110}${color2}${uptime}
 ${color4}${voffset -8}${stippled_hr 0} 
 ${color1}${font Xirod:size=6}CPU Client${font Xirod:size=6}${goto 100}CPU%${goto 145}MEM%${font}
-${color2}${top name 1}${goto 100}${top cpu 1}${goto 145}${top mem 1}
-${color 00CC00}${top name 2}${goto 100}${top cpu 2}${goto 145}${top mem 2}
-${color 009900}${top name 3}${goto 100}${top cpu 3}${goto 145}${top mem 3}
-${color 006600}${top name 4}${goto 100}${top cpu 4}${goto 145}${top mem 4}
-${color 003300}${top name 5}${goto 100}${top cpu 5}${goto 145}${top mem 5}
+${color2}${font DejaVu Sans:size=8}${top name 1}${font}${goto 100}${top cpu 1}${goto 145}${top mem 1}
+${color 00CC00}${font DejaVu Sans:size=8}${top name 2}${font}${goto 100}${top cpu 2}${goto 145}${top mem 2}
+${color 009900}${font DejaVu Sans:size=8}${top name 3}${font}${goto 100}${top cpu 3}${goto 145}${top mem 3}
+${color 006600}${font DejaVu Sans:size=8}${top name 4}${font}${goto 100}${top cpu 4}${goto 145}${top mem 4}
+${color 003300}${font DejaVu Sans:size=8}${top name 5}${font}${goto 100}${top cpu 5}${goto 145}${top mem 5}
 ${color1}${font Xirod:size=6}HDD ${color4}${stippled_hr 0}${font}
-${color}${font}Usage:${fs_used /} / ${fs_size}${alignr}Free:${fs_free /home} 
+${color}${font}Usage:${fs_used /} / ${fs_size}${alignr}
+Free:${fs_free /home} 
 ${color1}${fs_bar 4,175}${color}
 #Swap:${swapperc}% / ${swapmax}${goto 105}${color1}
 #${swapbar 4,75}
