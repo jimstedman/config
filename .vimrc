@@ -1,5 +1,3 @@
-"execute pathogen#infect()
-"execute pathogen#helptags()
 set nocompatible
 filetype off
 
@@ -9,7 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 " mini buff explorer
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
@@ -25,13 +23,16 @@ Bundle 'scrooloose/syntastic'
 Bundle 'lilydjwg/colorizer'
 " XML/HTML tags navigation
 Bundle 'matchit.zip'
+" javascript indent
+Bundle 'lukaszb/vim-web-indent'
+" powerline (status bar plugin)
+Bundle 'powerline/powerline'
 
 call vundle#end()
 filetype plugin indent on
 " end Vundle
 
 syntax on
-filetype indent plugin on
 
 let g:pydiction_location = '/home/sol/.vim/bundle/pydiction/complete-dict'
 
@@ -52,7 +53,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set shiftround
-set mouse=a
+set mouse=a " can probably remove this now
 
 " show whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -72,6 +73,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+
+map <C-s> :update<cr> 
 
 " pymode stuff
 let g:pymode_rope = 1
