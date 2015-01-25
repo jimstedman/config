@@ -29,7 +29,8 @@ Bundle 'lukaszb/vim-web-indent'
 " powerline (status bar plugin)
 Bundle 'powerline/powerline'
 " better autocompletion, includes jedi as a subrepo
-Bundle 'Valloric/YouCompleteMe'
+" *** disabled due to bad compilation, on td list ***
+" Bundle 'Valloric/YouCompleteMe'
 " solarized
 Bundle 'altercation/vim-colors-solarized'
 
