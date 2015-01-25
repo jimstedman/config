@@ -1,5 +1,6 @@
 set nocompatible
 filetype off
+set term=screen-256color
 
 " Vundle stuff and plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -27,6 +28,10 @@ Bundle 'matchit.zip'
 Bundle 'lukaszb/vim-web-indent'
 " powerline (status bar plugin)
 Bundle 'powerline/powerline'
+" better autocompletion, includes jedi as a subrepo
+Bundle 'Valloric/YouCompleteMe'
+" solarized
+Bundle 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
@@ -37,7 +42,7 @@ syntax on
 let g:pydiction_location = '/home/sol/.vim/bundle/pydiction/complete-dict'
 
 set number
-set numberwidth=5
+set numberwidth=4
 set textwidth=80
 set colorcolumn=+1  " color column 81
 set splitbelow
@@ -56,7 +61,7 @@ set shiftround
 set mouse=a " can probably remove this now
 
 " show whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\
 
 set lazyredraw
 
@@ -74,7 +79,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 
-map <C-s> :update<cr> 
+map! <C-s> <ESC>:update<cr>
+map <C-s> <ESC>:update<cr>
 
 " pymode stuff
 let g:pymode_rope = 1
@@ -82,8 +88,8 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_virtualenv = 1
 
-"set background=dark
-"colorscheme solarized
+set background=dark
+colorscheme solarized
 "
 "set background=light
 "colorscheme solarized
