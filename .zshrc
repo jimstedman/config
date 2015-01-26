@@ -42,5 +42,3 @@ ttyctl -f
 eval $(dircolors ~/.dir_colors/dircolors.256dark)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-# command for battery life
-alias batterylife="echo $((100*$(sed -n "s/remaining capacity: *\(.*\) m[AW]h/\1/p" /proc/acpi/battery/BAT0/state)/$(sed -n "s/last full capacity: *\(.*\) m[AW]h/\1/p" /proc/acpi/battery/BAT0/info)))%"
