@@ -19,7 +19,7 @@ source ~/.oh-my-zsh/lib/aliases.zsh
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    export EDITOR='mvim'
+    #export EDITOR='mvim'
 fi
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
@@ -38,3 +38,9 @@ setopt noflowcontrol # reclaim ctrl q and ctrl s
 alias vim="stty stop '' -ixoff ; vim"
 ttyctl -f
 
+# colored completion - use my LS_COLORS
+eval $(dircolors ~/.dir_colors/dircolors.256dark)
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# command for battery life
+alias batterylife="echo $((100*$(sed -n "s/remaining capacity: *\(.*\) m[AW]h/\1/p" /proc/acpi/battery/BAT0/state)/$(sed -n "s/last full capacity: *\(.*\) m[AW]h/\1/p" /proc/acpi/battery/BAT0/info)))%"
