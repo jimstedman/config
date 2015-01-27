@@ -38,9 +38,6 @@ setopt noflowcontrol # reclaim ctrl q and ctrl s
 alias vim="stty stop '' -ixoff ; vim"
 ttyctl -f
 
-# colored completion - use my LS_COLORS
-eval $(dircolors ~/.dir_colors/dircolors.256dark)
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
 # remap caps to ESC
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+

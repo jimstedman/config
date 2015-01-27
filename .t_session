@@ -1,0 +1,7 @@
+new -s code
+split-window -v
+split-window -h
+split-window -h
+attach-session -d
+select-layout main-vertical
+
