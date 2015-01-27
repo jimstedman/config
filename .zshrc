@@ -42,3 +42,5 @@ ttyctl -f
 eval $(dircolors ~/.dir_colors/dircolors.256dark)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# remap caps to ESC
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'

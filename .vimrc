@@ -95,3 +95,5 @@ colorscheme solarized
 "set background=light
 "colorscheme solarized
 "
+let mapleader = ","
+
