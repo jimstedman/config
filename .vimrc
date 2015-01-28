@@ -24,15 +24,15 @@ Bundle 'scrooloose/syntastic'
 Bundle 'lilydjwg/colorizer'
 " XML/HTML tags navigation
 Bundle 'matchit.zip'
-" javascript indent
-Bundle 'lukaszb/vim-web-indent'
 " powerline (status bar plugin)
-Bundle 'powerline/powerline'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 " better autocompletion, includes jedi as a subrepo
 " *** disabled due to bad compilation, on td list ***
 " Bundle 'Valloric/YouCompleteMe'
-" solarized
-Bundle 'altercation/vim-colors-solarized'
+" solarized vim-kalisi
+Bundle 'freeo/vim-kalisi' 
+" js syntax and indent
+Bundle 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
@@ -62,7 +62,7 @@ set shiftround
 set mouse=a " can probably remove this now
 
 " show whitespace
-set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\
+"set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\
 
 set lazyredraw
 
@@ -80,6 +80,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 
+map! <C-A-S-s> <ESC>:wq<cr>
+map <C-A-S-s> <ESC>:wq<cr>
 map! <C-s> <ESC>:update<cr>
 map <C-s> <ESC>:update<cr>
 
@@ -89,11 +91,10 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_virtualenv = 1
 
-set background=dark
-colorscheme solarized
-"
-"set background=light
-"colorscheme solarized
-"
-let mapleader = ","
+colorscheme kalisi
+"set background=dark
+set background=light
+
+" command to mkdir if needed when opening a file
+command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
 

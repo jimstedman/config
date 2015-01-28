@@ -40,4 +40,3 @@ ttyctl -f
 
 # remap caps to ESC
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-
