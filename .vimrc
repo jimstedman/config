@@ -92,8 +92,8 @@ let g:pymode_doc_key = 'K'
 let g:pymode_virtualenv = 1
 
 colorscheme kalisi
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 
 " command to mkdir if needed when opening a file
 command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
