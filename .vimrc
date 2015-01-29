@@ -98,3 +98,6 @@ set background=dark
 " command to mkdir if needed when opening a file
 command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
 
+" easy function ends for javascript
+map <C-l> i<cr>'});'<ESC>
+map! <C-l> <cr>'});'
