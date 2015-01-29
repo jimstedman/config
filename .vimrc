@@ -99,5 +99,5 @@ set background=dark
 command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
 
 " easy function ends for javascript
-map <C-l> i<cr>'});'<ESC>
+map <C-l> o'});'<ESC>
 map! <C-l> <cr>'});'
