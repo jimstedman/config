@@ -2,37 +2,40 @@ set nocompatible
 filetype off
 set term=screen-256color
 
+" reload .vimrc on save
+autocmd! bufwritepost .vimrc source %
+
+" more standard clipbaord
+set pastetoggle=<F2>
+set clipboard=unnamed
+
 " Vundle stuff and plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
-" mini buff explorer
-" Plugin 'fholgado/minibufexpl.vim'
-" Indent text object
+                " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
-" Python mode (indentation, doc, refactor, lints, code checking, motion and
-" operators, highlighting, run and ipdb breakpoints)
+                " Python mode
 Bundle 'klen/python-mode'
-" Better autocompletion
+                " Better autocompletion
 Bundle 'Shougo/neocomplcache.vim'
-" Automatically sort python imports
+                " Automatically sort python imports
 Bundle 'fisadev/vim-isort'
-" Python and other languages code checker
+                " Python and other languages code checker
 Bundle 'scrooloose/syntastic'
-" Paint css colors with the real color
+                " Paint css colors with the real color
 Bundle 'lilydjwg/colorizer'
-" XML/HTML tags navigation
+                " XML/HTML tags navigation
 Bundle 'matchit.zip'
-" powerline (status bar plugin)
+                " powerline (status bar plugin)
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
-" better autocompletion, includes jedi as a subrepo
-" *** disabled due to bad compilation, on td list ***
-" Bundle 'Valloric/YouCompleteMe'
-" solarized vim-kalisi
+                " solarized vim-kalisi
 Bundle 'freeo/vim-kalisi' 
-" js syntax and indent
+                " js syntax and indent
 Bundle 'pangloss/vim-javascript'
+                " ctrlp, easy open files in project
+Bundle 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -60,9 +63,21 @@ set shiftwidth=4
 set tabstop=4
 set shiftround
 set mouse=a " can probably remove this now
+set history=888
+set undolevels=888
+
+set hlsearch        " case insesitive searching
+set incsearch
+set ignorecase
+set smartcase
+noremap <silent><Leader>/ :nohls<CR> " clear search highlighting
+
+set nobackup        " I'll save my work, thanks.
+set nowritebackup   " the swap and backup files wreak havok with automated 
+set noswapfile      " testing
 
 " show whitespace
-"set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\
+set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\
 
 set lazyredraw
 
@@ -74,7 +89,15 @@ let g:miniBufExplModSelTarget = 1
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
-" movement between windows
+let mapleader = ','
+
+" move between tabs
+map <Leader>, <esc>:tabprevious<CR>
+map <Leader>. <esc>:tabnext<CR>
+map <Leader>c <esc>:tabclose<CR>
+map <Leader>n <esc>:tabnew<CR>
+
+" move between splits
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
@@ -84,6 +107,7 @@ map! <C-A-S-s> <ESC>:wq<cr>
 map <C-A-S-s> <ESC>:wq<cr>
 map! <C-s> <ESC>:update<cr>
 map <C-s> <ESC>:update<cr>
+map <Leader>s :sort<cr>             " alpha sort selection
 
 " pymode stuff
 let g:pymode_rope = 1
@@ -103,8 +127,8 @@ map <C-l> o});<ESC>
 map! <C-l> <cr>});
 
 " next or previous buffer
-map <C-k> :bn
-map <C-j> :bp
+map <C-k> :bn<cr>
+map <C-j> :bp<cr>
 
 " Toggle Vexplore with Ctrl-E from a friendly SO user
 function! ToggleVExplorer()
