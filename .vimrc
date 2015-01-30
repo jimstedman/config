@@ -130,6 +130,9 @@ map! <C-l> <cr>});
 map <C-k> :bn<cr>
 map <C-j> :bp<cr>
 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " Toggle Vexplore with Ctrl-E from a friendly SO user
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")
