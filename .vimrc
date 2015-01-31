@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 set term=screen-256color
+let mapleader = ','
 
 " reload .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -88,8 +89,6 @@ let g:miniBufExplModSelTarget = 1
 
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-
-let mapleader = ','
 
 " move between tabs
 map <Leader>, <esc>:tabprevious<CR>
