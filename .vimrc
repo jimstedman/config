@@ -37,6 +37,8 @@ Bundle 'freeo/vim-kalisi'
 Bundle 'pangloss/vim-javascript'
                 " ctrlp, easy open files in project
 Bundle 'kien/ctrlp.vim'
+                " php syntax highlighting
+Bundle 'StanAngeloff/php.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -122,12 +124,8 @@ set background=dark
 command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
 
 " easy function ends for javascript
-map <C-l> o});<ESC>
-map! <C-l> <cr>});
-
-" next or previous buffer
-map <C-k> :bn<cr>
-map <C-j> :bp<cr>
+map <C-]> o});<ESC>
+map! <C-]> <cr>});
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
