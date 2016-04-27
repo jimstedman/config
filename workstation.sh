@@ -3,8 +3,8 @@
 
 git clone --recursive https://github.com/jimstedman/prezto.git ~/.zprezto
 for rcfile in ~/.zprezto/runcoms/z*; do
-    F=$(echo $rcfile |cut -d'/' -f 6)
-    ln -s "$F" "${F:t}"
+    rcfilename=$(echo $rcfile |cut -d'/' -f 6)
+    ln -fs "$rcfile" "~/.${rcfilename:t}"
 done
 
 ./wd_install.sh
