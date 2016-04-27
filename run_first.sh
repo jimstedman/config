@@ -7,4 +7,4 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-apt-get install zsh tmux vim
+apt-get install zsh tmux vim-nox

@@ -1,6 +1,8 @@
 #!/bin/bash
 # set up dotfiles on new installation
 
+zsh
+
 git clone --recursive https://github.com/jimstedman/prezto.git
 "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
