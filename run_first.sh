@@ -8,3 +8,6 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 apt-get install zsh tmux vim-nox
+
+echo "Set vim-nox as default editor"
+update-alternatives --config editor
