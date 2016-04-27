@@ -9,5 +9,4 @@ fi
 
 apt-get install zsh tmux vim-nox
 
-echo "Set vim-nox as default editor"
-update-alternatives --config editor
+update-alternatives --set editor $(which vim-nox)
