@@ -19,8 +19,6 @@ Plugin 'L9'
 Bundle 'michaeljsmith/vim-indent-object'
                 " Python mode
 Bundle 'klen/python-mode'
-                " Better autocompletion
-Bundle 'Shougo/neocomplcache.vim'
                 " Automatically sort python imports
 Bundle 'fisadev/vim-isort'
                 " Python and other languages code checker
@@ -37,8 +35,8 @@ Bundle 'freeo/vim-kalisi'
 Bundle 'pangloss/vim-javascript'
                 " ctrlp, easy open files in project
 Bundle 'kien/ctrlp.vim'
-                " php syntax highlighting
-Bundle 'StanAngeloff/php.vim'
+                " high speed html & css editing
+Bundle 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -121,7 +119,7 @@ set background=dark
 "set background=light
 
 " command to mkdir if needed when opening a file
-command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
+command! -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
 
 " easy function ends for javascript
 map <C-]> o});<ESC>
