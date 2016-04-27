@@ -2,9 +2,8 @@
 # set up dotfiles on new installation
 
 git clone --recursive https://github.com/jimstedman/prezto.git ~/.zprezto
-setopt EXTENDED_GLOB
-for rcfile in ~/.zprezto/runcoms/^README.md; do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+for rcfile in ~/.zprezto/runcoms/z*; do
+    ln -s "$rcfile" "~/.${rcfile:t}"
 done
 
 ./wd_install.sh
