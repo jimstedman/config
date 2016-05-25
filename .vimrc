@@ -152,3 +152,4 @@ map <silent> <C-E> :call ToggleVExplorer()<CR>
 " enter in file browser to open file with :vsplit to the right
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
+set autochdir

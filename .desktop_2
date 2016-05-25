@@ -1,0 +1,2 @@
+uxterm -maximize -e tmux &
+chromium-browser &

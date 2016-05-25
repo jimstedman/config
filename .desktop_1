@@ -1,0 +1,3 @@
+uxterm -e tmux &
+firefox &
+

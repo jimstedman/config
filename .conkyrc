@@ -37,7 +37,7 @@ override_utf8_locale no
 TEXT
 ${color 2E940A}
 ${font Digital Readout Thick Upright:size=24}${alignc}${time %k:%M:%S}
-${font sans-serif:bold:size=16}${alignc}${time %a %b %d %Y}$font
+${font sans-serif:bold:size=14}${alignc}${time %a %b %d %Y}$font
 
 ${font sans-serif:bold:size=8}SYSTEM ${hr 2}
 ${font sans-serif:normal:size=8}$sysname $kernel $alignr $machine
