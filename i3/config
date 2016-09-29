@@ -1,0 +1,139 @@
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# constants
+set $mod Mod4
+
+# solarized colors
+set $base03     #002b36
+set $base02     #073642
+set $base01     #586e75
+set $base00     #657b83
+set $base0      #839496
+set $base1      #93a1a1
+set $base2      #eee8d5
+set $base3      #fdf6e3
+set $yellow     #b58900
+set $orange     #cb4b16
+set $red        #dc322f
+set $magenta    #d33682
+set $violet     #6c71c4
+set $blue       #268bd2
+set $cyan       #2aa198
+set $green      #859900
+
+# custom colors
+set $lt_blue    #99bbdd
+set $black      #222222
+set $gray       #444444
+
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws10 "10 "
+
+# interface settings
+# font pango:monospace 10
+font pango:DejaVu Sans Mono 10
+hide_edge_borders both
+floating_modifier $mod
+
+# keybindings
+bindsym $mod+Return exec uxterm
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec dmenu_run -fn xft:fixed:style=regular:pixelsize=24 -l 5 -x 600 -y 400 -w 400 -h 20 -nb \#073642 -nf cyan -sb black -sf cyan
+# bindsym $mod+z exec rofi -show run -lines 5 -eh 2 -opacity 85
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+o split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+#bindsym $mod+d focus child
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-msg exit"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+for_window [class="Pavucontrol"] floating enable
+
+# Widow Colours
+#                       border  background text    indicator
+client.focused          $base03 $base03    $base2  $magenta
+client.focused_inactive $base03 $base03    $base00 $magenta
+client.unfocused        $base03 $base03    $base00 $magenta
+client.urgent           $base03 $magenta   $base03 $magenta
+client.background black
+
+bar {
+    font pango: DejaVu Sans Mono 12, FontAwesome 12
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    position bottom
+    height 28
+    separator_symbol ""
+    colors {
+        separator $base02
+        separator #073642
+        background black
+        statusline $lt_blue
+#                          border    background text
+        focused_workspace  $black    $lt_blue   $black
+        active_workspace   $black    $gray      $cyan
+        inactive_workspace $black    $black     $cyan
+        urgent_workspace   $black    $black     $red
+    }
+}
+
+bindsym $mod+shift+x exec i3lock --color = "#000000"
+
+exec_always compton -f
