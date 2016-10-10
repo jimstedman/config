@@ -31,7 +31,6 @@ set $ws2 "2 "
 set $ws10 "10 "
 
 # interface settings
-# font pango:monospace 10
 font pango:DejaVu Sans Mono 10
 hide_edge_borders both
 floating_modifier $mod
@@ -39,8 +38,15 @@ floating_modifier $mod
 # keybindings
 bindsym $mod+Return exec uxterm
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec dmenu_run -fn xft:fixed:style=regular:pixelsize=24 -l 5 -x 600 -y 400 -w 400 -h 20 -nb \#073642 -nf cyan -sb black -sf cyan
-# bindsym $mod+z exec rofi -show run -lines 5 -eh 2 -opacity 85
+bindsym --release $mod+x exec scrot -s -e 'mv $f ~/tmp'
+bindsym Print exec scrot -e 'mv $f ~/tmp'
+bindsym $mod+d exec "dmenu_run -fn xft:fixed:style=regular:pixelsize=24 -l 5 -x 600 -y 400 -w 400 -h 20 -nb \#073642 -nf cyan -sb black -sf cyan"
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+w exec firefox
+
+
+# bindsym Print exec shift_insert
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -90,14 +96,13 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -105,7 +110,41 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [class="Pavucontrol"] floating enable
+set $mode-brightness " brightness"
+bindsym $mod+b mode $mode-brightness
+mode $mode-brightness {
+    bindsym k exec "xbacklight -inc 5"
+    bindsym j exec "xbacklight -dec 5"
+    bindsym h exec "kbdlight down"
+    bindsym l exec "kbdlight up"
+
+    bindsym 1 exec "xbacklight -set 10"
+    bindsym 2 exec "xbacklight -set 20"
+    bindsym 3 exec "xbacklight -set 30"
+    bindsym 4 exec "xbacklight -set 40"
+    bindsym 5 exec "xbacklight -set 50"
+    bindsym 6 exec "xbacklight -set 60"
+    bindsym 7 exec "xbacklight -set 70"
+    bindsym 8 exec "xbacklight -set 80"
+    bindsym 9 exec "xbacklight -set 90"
+    bindsym 0 exec "xbacklight -set 100"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode-poweroff " : [p]oweroff [r]eboot [l]ock [e]xit"
+bindsym $mod+Shift+x mode $mode-poweroff
+bindsym $mod+Shift+e mode $mode-poweroff
+mode $mode-poweroff {
+    bindsym p exec "poweroff"
+    bindsym r exec "reboot"
+    bindsym l exec i3lock --color "000000"; mode "default"
+    bindsym e exec "i3-msg exit"
+
+bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Widow Colours
 #                       border  background text    indicator
@@ -134,6 +173,7 @@ bar {
     }
 }
 
-bindsym $mod+shift+x exec i3lock --color = "#000000"
+for_window [class="Pavucontrol"] floating enable
 
+exec xautolock -locker 'i3lock --color "000000"'
 exec_always compton -f
