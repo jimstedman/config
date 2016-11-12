@@ -37,15 +37,16 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kien/ctrlp.vim'
                 " high speed html & css editing
 Bundle 'mattn/emmet-vim'
+                " golang for vim
+Bundle 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
 " end Vundle
 
-syntax on
-
 let g:pydiction_location = '/home/sol/.vim/bundle/pydiction/complete-dict'
 
+syntax on
 set number
 set numberwidth=4
 set textwidth=80
@@ -76,6 +77,8 @@ noremap <silent><Leader>/ :nohls<CR> " clear search highlighting
 set nobackup        " I'll save my work, thanks.
 set nowritebackup   " the swap and backup files wreak havok with automated 
 set noswapfile      " testing
+
+set omnifunc=syntaxcomplete#Complete
 
 " show whitespace
 set list listchars=tab:»·,trail:·,nbsp:·,tab:▸\

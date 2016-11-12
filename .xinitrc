@@ -15,4 +15,6 @@ case $1 in
   *) exec dbus-launch  $DEFAULT_SESSION ;;
 esac
 
+# exec i3 -v >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
+
 setxkbmap -option caps:escape
